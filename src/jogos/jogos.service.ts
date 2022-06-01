@@ -12,16 +12,16 @@ export class jogosService {
     return this.prisma.jogos.findMany();
   }
 
-  findOne(id: string): Promise<Jogos> {
+  findOne(id: string) {
     return this.prisma.jogos.findUnique({ where: { id }});
   }
 
-  create(dto: CreateJogosDto): Promise<Jogos> {
+  create(dto: CreateJogosDto){
     const data: Jogos = { ...dto };
 
     return this.prisma.jogos.create({ data });
   }
-  update(id: string, dto: UpdateJogosDto): Promise<Jogos> {
+  update(id: string, dto: UpdateJogosDto){
     const data: Partial<Jogos> = { ...dto };
 
     return this.prisma.jogos.update({

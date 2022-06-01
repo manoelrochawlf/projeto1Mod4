@@ -4,8 +4,8 @@ import { jogosController } from './jogos.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule], // < NOVA LINHA
+  imports: [PrismaModule],
   controllers: [jogosController],
-  providers: [jogosService],
+  providers: [jogosService]
 })
 export class jogosModule {}
