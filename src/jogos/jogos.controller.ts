@@ -16,7 +16,7 @@ export class jogosController {
   @ApiOperation({
     summary: 'Listar todas os jogos',
   })
-  findAll(): Promise<Jogos[]> {
+  findAll(){
     return this.jogosService.findAll();
   }
 
@@ -24,7 +24,7 @@ export class jogosController {
   @ApiOperation({
     summary: 'Visualizar um jogo',
   })
-  findOne(@Param('id') id: string): Promise<Jogos> {
+  findOne(@Param('id') id: string){
     return this.jogosService.findOne(id);
   }
 
@@ -32,7 +32,7 @@ export class jogosController {
   @ApiOperation({
     summary: 'Adicionar um jogo',
   })
-  create(@Body() dto: CreateJogosDto): Promise<Jogos> {
+  create(@Body() dto: CreateJogosDto) {
     return this.jogosService.create(dto);
   }
 
@@ -40,7 +40,7 @@ export class jogosController {
   @ApiOperation({
     summary: 'Editar um jogo pelo ID',
    })
-  update(@Param('id') id: string, @Body() dto: UpdateJogosDto): Promise<Jogos> {
+  update(@Param('id') id: string, @Body() dto: UpdateJogosDto){
     return this.jogosService.update(id, dto);
   }
   @Delete(':id')

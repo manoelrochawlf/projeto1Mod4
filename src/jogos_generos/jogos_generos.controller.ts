@@ -1,12 +1,21 @@
-import { Controller, Get, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Body, Patch, Param, Delete, Post } from '@nestjs/common';
 import { JogosGenerosService } from './jogos_generos.service';
 import { UpdateJogosGeneroDto } from './dto/update-jogos_genero.dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { CreateJogosGeneroDto } from './dto/create-jogos_genero.dto';
 
 @ApiTags('jogos-generos')
 @Controller('jogos-generos')
 export class JogosGenerosController {
   constructor(private readonly jogosGenerosService: JogosGenerosService) {}
+
+  @Post()
+  @ApiOperation({
+    summary: 'Criar novo relacionamento',
+  })
+  create(@Body() dto: CreateJogosGeneroDto) {
+    return this.jogosGenerosService.create(dto);
+  }
 
   @Get()
   @ApiOperation({

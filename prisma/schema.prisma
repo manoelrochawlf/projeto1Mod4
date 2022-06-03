@@ -13,7 +13,12 @@ datasource db {
 model Jogos {
   id String @id @default(uuid())
   Title String
+  CoverImageUrl String
   Description String
+  Year Float
+  ImdbScore Float
+  TrailerYouTubeUrl String
+  GameplayYouTubeUrl String
 
   JogosGeneros JogosGeneros[]
   ProfilesJogos ProfilesJogos[]
@@ -39,10 +44,10 @@ model Generos {
 model User {
   id String @id @default(uuid())
   Name String
-  Email String
+  Email String @unique
   Password String
   Cpf String
-  isAdmin Boolean
+  isAdmin Boolean?
 
   Profiles Profiles[]
 
@@ -71,11 +76,12 @@ model Profiles {
 model ProfilesJogos {
 
   id  String  @id @default(uuid())
-  Profiles  Profiles @relation(fields: [profilesId], references: [id])
-  Jogos  Jogos  @relation(fields: [jogosId], references: [id])
+  Profiles  Profiles? @relation(fields: [profilesId], references: [id])
+  Jogos  Jogos?  @relation(fields: [jogosId], references: [id])
 
-  jogosId String @map("jogos_id")
-  profilesId  String  @map("generos_id")
+  jogosId String? @map("jogos_id")
+  profilesId  String?  @map("generos_id")
+
 
   @@map("profiles_jogos")
 
@@ -83,11 +89,11 @@ model ProfilesJogos {
 
 model JogosGeneros {
   id  String  @id @default(uuid())
-  Generos   Generos @relation(fields: [generosId], references: [id])
-  Jogos    Jogos  @relation(fields: [jogosId], references: [id])
+  Generos   Generos? @relation(fields: [generosId], references: [id])
+  Jogos    Jogos?  @relation(fields: [jogosId], references: [id])
 
-  jogosId String @map("jogos_id")
-  generosId  String  @map("generos_id")
+  jogosId String? @map("jogos_id")
+  generosId  String?  @map("generos_id")
 
   @@map("jogos_generos")
 }

@@ -11,7 +11,6 @@ export class CreateProfilesDto {
   Title: string;
 
   ProfileJogos?:string[]
-  userId: string
 
   @IsString()
   @ApiProperty({
@@ -19,5 +18,12 @@ export class CreateProfilesDto {
     example: 'ihidsfhttps://ih0.redbubble.net/image.618427277.3222/flat,1000x1000,075,f.u2.jpg',
   })
   ImageURL: string;
+
+  @IsString()
+  @ApiProperty({
+    description: 'Id do User',
+    example: 'b3245buyhdbh43',
+  })
+  userId: string
 
 }
